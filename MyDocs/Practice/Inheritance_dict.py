@@ -57,10 +57,10 @@ print()
 
 
 class MyDict4(dict):
-    def __init__(self, ky_lst):
+    def __init__(self, key_lst):
         super().__init__()
-        for ky in ky_lst:
-            self[ky] = []
+        for key in key_lst:
+            self[key] = []
 
 my_dict4_a = MyDict4(['Apple', 'Huawei', 'Samsung'])
 print(type(my_dict4_a))
@@ -76,13 +76,13 @@ class MyDict5(dict):
     def __init__(self):
         super().__init__()
 
-    def __setitem__(self, ky, val):
-        if self.__contains__(ky):
-            lst = super().__getitem__(ky)
-            lst.append(val)
-            super().__setitem__(ky, lst)
+    def __setitem__(self, key, value):
+        if self.__contains__(key):
+            lst = super().__getitem__(key)
+            lst.append(value)
+            super().__setitem__(key, lst)
         else:
-            super().__setitem__(ky, [val])
+            super().__setitem__(key, [value])
 
 
 my_dict5_a = MyDict5()
@@ -92,7 +92,45 @@ my_dict5_a['Apple'] = 'iPhone4S'
 my_dict5_a['Huawei'] = 'Huawei P10'
 my_dict5_a['Huawei'] = 'Huawei P20 lite'
 print(my_dict5_a)
+print()
 '''
 <class '__main__.MyDict5'>
 {'Apple': ['iPhoneXS', 'iPhone4S'], 'Huawei': ['Huawei P10', 'Huawei P20 lite']}
 '''
+
+
+class ResultHolder(dict):
+    def __init__(self):
+        super().__init__()
+
+    def __setitem__(self, key, value):
+        if self.__contains__(key):
+            lst = super().__getitem__(key)
+            lst.append(value)
+            super().__setitem__(key, lst)
+        else:
+            super().__setitem__(key, [value])
+
+    def set_result(self, result_dict):
+        for key, value in result_dict.items():
+            self.__setitem__(key, value)
+
+result_holder = ResultHolder()
+print(type(result_holder))
+result_dict1 = {
+    'Apple': 'iPhone XS',
+    'Huawei': 'HUAWEI P10 Pro'
+}
+result_dict2 = {
+    'Apple': 'iPhone 4S',
+    'Huawei': 'HUAWEI P20 lite'
+}
+result_holder.set_result(result_dict1)
+result_holder.set_result(result_dict2)
+print(result_holder)
+print()
+'''
+<class '__main__.ResultHolder'>
+{'Apple': ['iPhone XS', 'iPhone 4S'], 'Huawei': ['HUAWEI P10 Pro', 'HUAWEI P20 lite']}
+'''
+
