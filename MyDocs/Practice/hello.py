@@ -1,11 +1,6 @@
-class MyClass(object):
-    def __init__(self, b, a):
-        self.a = a
-        self.b = b
+import Practice.hello2
 
-    def print_value(self):
-        print('self.a =', self.a)
-        print('self.b =', self.b)
-
-myclass = MyClass(1, 2)
-myclass.print_value()
+Practice.hello2
+Practice.hello2.print_hello2()
+hello2 = Practice.hello2.Hello2(1)
+print('hello2.value in hello.py =', hello2.value)
