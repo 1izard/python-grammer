@@ -4,8 +4,7 @@ class Meta(type):
             if isinstance(value, Field):
                 value.name = key
                 value.internal_name = '_' + key
-        cls = type.__new__(meta, name, bases, class_dict)
-        return cls
+        return type.__new__(meta, name, bases, class_dict)
 
 
 class Field(object):
@@ -31,8 +30,17 @@ class BetterCustomer(DatabaseRow):
 
 
 def main():
+    bc = BetterCustomer()
+    print('bc.first_name =', bc.first_name)
+    print('repr(bc.first_name) =', repr(bc.first_name))
+    print('bc.__dict__ =', bc.__dict__)
+    print()
 
-
+    bc.first_name = 'FirstName'
+    print('bc.first_name =', bc.first_name)
+    print('repr(bc.first_name) =', repr(bc.first_name))
+    print('bc.__dict__ =', bc.__dict__)
+    print()
 
 if __name__ == '__main__':
     main()
