@@ -1,3 +1,6 @@
+'''
+copyreg usage for management of pickled instance's class version
+'''
 import pickle
 import copyreg
 
