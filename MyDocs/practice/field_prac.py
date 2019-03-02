@@ -34,5 +34,6 @@ def main():
         my_class.__class__.__dict__ = {'__module__': '__main__', '__dict__': <attribute '__dict__' of 'MyClass2' objects>, '__weakref__': <attribute '__weakref__' of 'MyClass2' objects>, '__doc__': None}
     '''
 
+
 if __name__ == '__main__':
     main()
